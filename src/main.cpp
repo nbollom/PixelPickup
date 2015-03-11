@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <entityx/entityx.h>
+#include <chipmunk/chipmunk.h>
 #include <iostream>
 
 #define DESIGNWIDTH 1920.f
@@ -14,7 +16,7 @@ void updateView(sf::View &view, float windowWidth, float windowHeight) {
     }
     float left = (width - DESIGNWIDTH) / 2;
     float top = (height - DESIGNHEIGHT) / 2;
-//    std::cout << "Left: " << left << std::endl << "Top: " << top << std::endl << "Width: " << width << std::endl << "Height: " << height << std::endl;
+    std::cout << "Left: " << left << std::endl << "Top: " << top << std::endl << "Width: " << width << std::endl << "Height: " << height << std::endl;
     sf::FloatRect viewPort(left / width, top / height, DESIGNWIDTH / width, DESIGNHEIGHT / height);
     view.setSize(DESIGNWIDTH, DESIGNHEIGHT);
     view.setCenter(DESIGNWIDTH / 2, DESIGNHEIGHT / 2);
@@ -23,7 +25,7 @@ void updateView(sf::View &view, float windowWidth, float windowHeight) {
 
 int main(int argc, char **argv) {
     bool fullscreen = false;
-    sf::RenderWindow window(sf::VideoMode((unsigned int)DESIGNWIDTH, (unsigned int)DESIGNHEIGHT), "SFML works!", fullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode((unsigned int)DESIGNWIDTH, (unsigned int)DESIGNHEIGHT), "Pixel Pickup", fullscreen ? sf::Style::Fullscreen : sf::Style::Default);
     window.setFramerateLimit(60);
     sf::View view = window.getView();
     updateView(view, window.getSize().x, window.getSize().y);
@@ -55,7 +57,7 @@ int main(int argc, char **argv) {
                 else if (event.key.code == sf::Keyboard::Return && event.key.alt) {
                     fullscreen = !fullscreen;
                     window.close();
-                    window.create(sf::VideoMode((unsigned int)DESIGNWIDTH, (unsigned int)DESIGNHEIGHT), "SFML works!", fullscreen ? sf::Style::Fullscreen : sf::Style::Default);
+                    window.create(sf::VideoMode((unsigned int)DESIGNWIDTH, (unsigned int)DESIGNHEIGHT), "Pixel Pickup", fullscreen ? sf::Style::Fullscreen : sf::Style::Default);
                     window.setFramerateLimit(60);
                     updateView(view, window.getSize().x, window.getSize().y);
                     window.setView(view);

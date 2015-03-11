@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project (sfml_test)
+project (pixelpickup)
 
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "SFML static libraries")
 set(SFML_BUILD_DOC OFF CACHE BOOL "SFML no docs")
